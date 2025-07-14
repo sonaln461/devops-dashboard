@@ -8,5 +8,6 @@ export default {
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["devops-dashboard_*"],
+  strict: true,
+  tablesFilter: "devops-dashboard_%",
 } satisfies Config;

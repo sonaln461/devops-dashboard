@@ -1,9 +1,16 @@
-import Link from "next/link";
+import { DeploymentsTable } from "../components/DeploymentsTable";
+import { DeploymentRiskBanner } from "../components/DeploymentRiskBanner";
+import { DeploymentMetricsChart } from "../components/DeploymentMetricsChart";
+import { NewDeploymentForm } from "../components/NewDeploymentForm";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      Hello!
+    <main className="p-10 space-y-6">
+      <h1 className="text-4xl font-bold">DevOps Deployment Dashboard</h1>
+      <DeploymentRiskBanner />
+      <DeploymentMetricsChart />
+      <DeploymentsTable />
+      <NewDeploymentForm />
     </main>
   );
 }
