@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
+import { useSelectedProject } from "../context/SelectedProjectContext";
 
 export function NewDeploymentForm() {
+  const { selected } = useSelectedProject();
   const [version, setVersion] = useState("");
   const [env, setEnv] = useState("staging");
 
@@ -10,13 +12,21 @@ export function NewDeploymentForm() {
     await fetch("/api/deployments", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ version, environment: env, project: "demo", status: "pending" }),
+      body: JSON.stringify({
+        version,
+        environment: env,
+        project: selected ?? "demo",
+        status: "pending",
+      }),
     });
     setVersion("");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 bg-gray-900 p-4 rounded border border-gray-700">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4 bg-gray-900 p-4 rounded border border-gray-700"
+    >
       <h2 className="text-xl font-semibold">Trigger New Deployment</h2>
       <input
         type="text"

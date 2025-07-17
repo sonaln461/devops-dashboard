@@ -3,11 +3,11 @@
 ## TODO
 
 - [x] Make it deploy
-- [ ] Scaffold basic ui with mock data
-- [ ] Set up database
-- [ ] Sync database with UI
+- [x] Scaffold basic ui with mock data
+- [x] Set up database
+- [x] Sync database with UI
 - [ ] Add auth
-- [ ] Python FastAPI
+- [x] Python FastAPI
 - [ ] Add in ML Component
 - [ ] Go Service for Log Ingestion
 - [ ] Realtime WebSocket Server

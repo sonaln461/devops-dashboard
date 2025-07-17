@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export function DeploymentsTable() {
+export function DeploymentsTable({ project }: { project: string | null }) {
   const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
@@ -9,6 +9,8 @@ export function DeploymentsTable() {
       .then((res) => res.json())
       .then(setData);
   }, []);
+
+  const filtered = project ? data.filter((d) => d.project === project) : data;
 
   return (
     <div className="bg-gray-900 p-4 rounded border border-gray-700">
@@ -24,7 +26,7 @@ export function DeploymentsTable() {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {filtered.map((item) => (
             <tr key={item.id} className="border-t border-gray-800">
               <td>{item.project}</td>
               <td>{item.environment}</td>

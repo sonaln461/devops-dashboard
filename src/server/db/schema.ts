@@ -15,6 +15,14 @@ import {
  */
 export const createTable = pgTableCreator((name) => `devops-dashboard_${name}`);
 
+export const projects = createTable(
+  "projects",
+  {
+    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+    name: varchar("name", { length: 255 }).notNull().unique(),
+  }
+);
+
 export const deployments = createTable(
   "deployments", 
   {
@@ -28,6 +36,7 @@ export const deployments = createTable(
       .defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()
-      .defaultNow()
+      .defaultNow(),
+    riskScore: integer("risk_score"),
   }
 );

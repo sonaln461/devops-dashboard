@@ -1,0 +1,8 @@
+{
+    "project": "payment-service",
+    "environment": "staging",
+    "version": "v1.12.7",
+    "status": "failed",
+    "time_of_day": "afternoon",
+    "prev_failure_rate": "0.4"
+}

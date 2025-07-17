@@ -1,27 +1,34 @@
-import "~/styles/globals.css";
+"use client";
 
-import { type Metadata } from "next";
+import "~/styles/globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Rubik } from "next/font/google";
+import { Sidebar } from "~/components/Sidebar";
+import { useState } from "react";
+import { SelectedProjectProvider } from "../context/SelectedProjectContext";
 
 const rubik = Rubik({
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
   variable: "--font-rubik",
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
 });
-
-export const metadata: Metadata = {
-  title: "DevOps Dashboard",
-  description: "",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-};
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
+
   return (
-    <html lang="en" className={`${rubik.variable} font-rubik`}>
-        <body className="bg-gray-950 text-white min-h-screen">{children}</body>
+    <ClerkProvider>
+      <html lang="en" className={`${rubik.variable} font-sans`}>
+        <body className="bg-gray-950 text-white min-h-screen flex">
+          <SelectedProjectProvider>
+            <Sidebar />
+            <main className="flex-1 overflow-y-auto p-10">{children}</main>
+          </SelectedProjectProvider>
+        </body>
       </html>
+    </ClerkProvider>
   );
 }
