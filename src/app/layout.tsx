@@ -1,7 +1,7 @@
 "use client";
 
 import "~/styles/globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+//import { ClerkProvider } from "@clerk/nextjs";
 import { Rubik } from "next/font/google";
 import { Sidebar } from "~/components/Sidebar";
 import { useState } from "react";
@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
 
   return (
-    <ClerkProvider>
+    //<ClerkProvider>
       <html lang="en" className={`${rubik.variable} font-sans`}>
         <body className="bg-gray-950 text-white min-h-screen flex">
           <SelectedProjectProvider>
@@ -29,6 +29,6 @@ export default function RootLayout({
           </SelectedProjectProvider>
         </body>
       </html>
-    </ClerkProvider>
+    //</ClerkProvider>
   );
 }
